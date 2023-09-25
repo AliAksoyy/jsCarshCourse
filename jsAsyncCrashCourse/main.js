@@ -1,207 +1,240 @@
-console.log("object");
+// console.log("object");
 
-// topixs to cover
-// Timeouts and Intervals, Callbacks, Promises, async await, event Lopp
+// // topixs to cover
+// // Timeouts and Intervals, Callbacks, Promises, async await, event Lopp
 
-//  js normalde single thread bir dildir senkron'dur
-// js normal bir zamanda yalnızca bir satır çalıştırarak yukarıdan aşağıya doğru yürütülür.Diğer kodlar öncekinin sonucu beklemek zorundadır
+// //  js normalde single thread bir dildir senkron'dur
+// // js normal bir zamanda yalnızca bir satır çalıştırarak yukarıdan aşağıya doğru yürütülür.Diğer kodlar öncekinin sonucu beklemek zorundadır
 
-// js synchronous , blocking, single-threaded language
+// // js synchronous , blocking, single-threaded language
 
-// aslında burada devreye yardımcı elemanlar giriyor yani web api'leri js'de böyle ihtiyacı gideremediğimiz için js'nin olmayan kod parçalarını çalıştırıyoruz
+// // aslında burada devreye yardımcı elemanlar giriyor yani web api'leri js'de böyle ihtiyacı gideremediğimiz için js'nin olmayan kod parçalarını çalıştırıyoruz
 
-// ana kodumuzu durdurmadan eş zamansız olrak arkada kodların yürütülmesini askenron kodlar sayesinde sağlarız
+// // ana kodumuzu durdurmadan eş zamansız olrak arkada kodların yürütülmesini askenron kodlar sayesinde sağlarız
 
-// TimeOut and Intervals bunlar js'de özellikleri değildir tarayıcvalrın özelliğidir
+// // TimeOut and Intervals bunlar js'de özellikleri değildir tarayıcvalrın özelliğidir
 
-const handleTimeOut = (a) => {
-  console.log("timeOut" + " " + a);
-};
+// const handleTimeOut = (a) => {
+//   console.log("timeOut" + " " + a);
+// };
 
-let a = setTimeout(handleTimeOut, 2000, "ali");
-// clearTimeout(a);
+// let a = setTimeout(handleTimeOut, 2000, "ali");
+// // clearTimeout(a);
 
-function ali() {
-  console.log("ali");
-}
-
-let beyda = setInterval(ali, 2000);
-console.log(beyda);
-clearInterval(beyda);
-
-setTimeout(() => {
-  console.log("first");
-  setTimeout(() => {
-    console.log("second");
-  }, 1500);
-}, 100);
-
-// CallBacks herhangi bir fn diğer fn argüman olarak iletililirse yani diğer işlevlere argüman olrak aktrılan işlevlerdir
-
-// in js , functions are first class objects
-
-function greet(name) {
-  console.log("Hello " + name);
-}
-
-const greetAli = (fn) => {
-  // aslında bu HOF ve bir fn argüman olarak kabul eden veya bir işlev döndürene de HOF denir
-  const name = "ali";
-  fn(name); // callback
-};
-
-greetAli(greet);
-
-//  callback neden ihtiyac duyarız
-// 1 synchronous callBacks hemen yürütülen bir callback sync geri arama denir yukarı da ki örnek ya da aşağıda ki örnek
-
-let numbers = [1, 2, 3, 4, 5];
-
-numbers.map((item) => item * 2);
-console.log(numbers.sort((a, b) => b - a));
-
-// 2 async callback
-
-function beyda1() {
-  console.log("object");
-}
-setTimeout(beyda1, 2000);
-
-// function cllbck() {
-//   document.body.getElementsByTagName("h1")[0].innerText = "Js Async";
-//   console.log(object);
+// function ali() {
+//   console.log("ali");
 // }
-// document.getElementsByTagName("h1")[0].addEventListener("click", cllbck);
 
-// Promise
+// let beyda = setInterval(ali, 2000);
+// console.log(beyda);
+// clearInterval(beyda);
 
-// promise                           your friends
+// setTimeout(() => {
+//   console.log("first");
+//   setTimeout(() => {
+//     console.log("second");
+//   }, 1500);
+// }, 100);
 
-// async js fetchTacos               so you start preparing soup in the meaintime
+// // CallBacks herhangi bir fn diğer fn argüman olarak iletililirse yani diğer işlevlere argüman olrak aktrılan işlevlerdir
 
-// promise return value               can get tacos or cannot get tacos
+// // in js , functions are first class objects
 
-// promise is said to be fulfillded  can get tacos
+// function greet(name) {
+//   console.log("Hello " + name);
+// }
 
-// promise is said to be rejected    cannot get tacos
+// const greetAli = (fn) => {
+//   // aslında bu HOF ve bir fn argüman olarak kabul eden veya bir işlev döndürene de HOF denir
+//   const name = "ali";
+//   fn(name); // callback
+// };
 
-// success callback                  set up th table
+// greetAli(greet);
 
-// failure callback                  cook pasta
+// //  callback neden ihtiyac duyarız
+// // 1 synchronous callBacks hemen yürütülen bir callback sync geri arama denir yukarı da ki örnek ya da aşağıda ki örnek
 
-// promise eszamansız eylemlere ilişkilendirme yapar
+// let numbers = [1, 2, 3, 4, 5];
 
-//  yani promise bir söz vermedir taco'yu getirip getiremeyeceğine promise oluşturulduğunda söz değeri mutlaka bilinmez
+// numbers.map((item) => item * 2);
+// console.log(numbers.sort((a, b) => b - a));
 
-// bu nedenle de fulfilled mi rejected mi olduğuna göre değişir
+// // 2 async callback
 
-// Promise js' de bir objectir....
-// pending : initial state, fulfilled : successfully,  rejected :failuere neden kullanılır async yapmak için
+// function beyda1() {
+//   console.log("object");
+// }
+// setTimeout(beyda1, 2000);
 
-// Promise iki tane argüman fn alır bunlar resolve ve rejected'dir
+// // function cllbck() {
+// //   document.body.getElementsByTagName("h1")[0].innerText = "Js Async";
+// //   console.log(object);
+// // }
+// // document.getElementsByTagName("h1")[0].addEventListener("click", cllbck);
 
-// const promise = new Promise((resolve, reject) => {
-// change status from "pending" to "fulfillde"
-// resolve() burada parametre iletebiltiz
-// change status from "pending" to "fulfillde"
-//  reject() burada parametre iletebiltiz
+// // Promise
+
+// // promise                           your friends
+
+// // async js fetchTacos               so you start preparing soup in the meaintime
+
+// // promise return value               can get tacos or cannot get tacos
+
+// // promise is said to be fulfillded  can get tacos
+
+// // promise is said to be rejected    cannot get tacos
+
+// // success callback                  set up th table
+
+// // failure callback                  cook pasta
+
+// // promise eszamansız eylemlere ilişkilendirme yapar
+
+// //  yani promise bir söz vermedir taco'yu getirip getiremeyeceğine promise oluşturulduğunda söz değeri mutlaka bilinmez
+
+// // bu nedenle de fulfilled mi rejected mi olduğuna göre değişir
+
+// // Promise js' de bir objectir....
+// // pending : initial state, fulfilled : successfully,  rejected :failuere neden kullanılır async yapmak için
+
+// // Promise iki tane argüman fn alır bunlar resolve ve rejected'dir
+
+// // const promise = new Promise((resolve, reject) => {
+// // change status from "pending" to "fulfillde"
+// // resolve() burada parametre iletebiltiz
+// // change status from "pending" to "fulfillde"
+// //  reject() burada parametre iletebiltiz
+// // });
+
+// // promise.then() pending to fulfillde is executed
+// // promise.catch()  pending to rejected is executed
+
+// // let promise = new Promise((resolve,reject)=> {
+// //     resolve() rejects()
+
+// // })
+
+// // promise.then(onFulfillment)
+// // promise.catch(onRejected)
+
+// // Promise all
+
+// // const promise1 = Promise.resolve(3)
+// //  const promise2 = 42
+// // const promise3 = new Promise ((resolve,reject)=> {
+// //     setTimeout(resolve,100, foo)
+// // })
+
+// // Promise.all([promise1, promise2, promise3]).then((values)=> {console.log(values)}) expected Array  [3,42,"foo"]
+// // Promise.allSettled bir söz reddeilse bile tüm giriş vaatleri geri döner
+// // Promise.race hangisi hızlı ise o sonucu verir
+
+// const promise1 = Promise.resolve(1);
+// const promise2 = Promise.resolve(2);
+// const promise3 = Promise.reject("Hata!");
+
+// Promise.all([promise1, promise2, promise3])
+//   .then((results) => {
+//     console.log(results); // Bu kısım çalışmaz, çünkü promise3 hata verir.
+//   })
+//   .catch((error) => {
+//     console.error(error); // "Hata!" çıktısını verir.
+//   });
+
+// const promise11 = Promise.resolve(1);
+// const promise22 = Promise.resolve(2);
+// const promise33 = Promise.reject("Hata!");
+
+// Promise.allSettled([promise11, promise22, promise33]).then((results) => {
+//   console.log(results);
+//   /*
+//     [
+//       { status: 'fulfilled', value: 1 },
+//       { status: 'fulfilled', value: 2 },
+//       { status: 'rejected', reason: 'Hata!' }
+//     ]
+//     */
 // });
 
-// promise.then() pending to fulfillde is executed
-// promise.catch()  pending to rejected is executed
+// // Async Await
 
-// let promise = new Promise((resolve,reject)=> {
-//     resolve() rejects()
+// //  async işlevleri her zman bir söz verir
 
-// })
+// function ali22() {
+//   console.log("hello sync");
+// }
 
-// promise.then(onFulfillment)
-// promise.catch(onRejected)
+// async function ali23() {
+//   return Promise.resolve("ali async return");
+// }
 
-// Promise all
+// ali22();
+// ali23().then((res) => console.log(res));
 
-// const promise1 = Promise.resolve(3)
-//  const promise2 = 42
-// const promise3 = new Promise ((resolve,reject)=> {
-//     setTimeout(resolve,100, foo)
-// })
+// async function greet12() {
+//   let promise = new Promise((resolve, reject) => {
+//     setTimeout(resolve("hello await"), 1000);
+//   });
+//   let result = await promise; // wait until the promise resolves()
+//   console.log(result);
+// }
 
-// Promise.all([promise1, promise2, promise3]).then((values)=> {console.log(values)}) expected Array  [3,42,"foo"]
-// Promise.allSettled bir söz reddeilse bile tüm giriş vaatleri geri döner
-// Promise.race hangisi hızlı ise o sonucu verir
+// greet12();
 
-const promise1 = Promise.resolve(1);
-const promise2 = Promise.resolve(2);
-const promise3 = Promise.reject("Hata!");
+// function resolveHello() {
+//   return new Promise((resolve) => {
+//     setTimeout(function () {
+//       resolve("AKSOY");
+//     }, 2000);
+//   });
+// }
 
-Promise.all([promise1, promise2, promise3])
-  .then((results) => {
-    console.log(results); // Bu kısım çalışmaz, çünkü promise3 hata verir.
-  })
-  .catch((error) => {
-    console.error(error); // "Hata!" çıktısını verir.
-  });
+// function resolveWorld() {
+//   return new Promise((resolve) => {
+//     setTimeout(function () {
+//       resolve("AYSE");
+//     }, 1000);
+//   });
+// }
 
-const promise11 = Promise.resolve(1);
-const promise22 = Promise.resolve(2);
-const promise33 = Promise.reject("Hata!");
+// async function parallel() {
+//   await Promise.all([
+//     (async () => console.log(await resolveHello()))(),
+//     (async () => console.log(await resolveWorld()))(),
+//   ]);
+// }
+// parallel();
 
-Promise.allSettled([promise11, promise22, promise33]).then((results) => {
-  console.log(results);
-  /*
-    [
-      { status: 'fulfilled', value: 1 },
-      { status: 'fulfilled', value: 2 },
-      { status: 'rejected', reason: 'Hata!' }
-    ]
-    */
-});
+// // Event Loop
+// // js runtime enviroment
+// // js Engine  memory Heap and Call Stack; değişkenleri ya da  fn 'leri bildirdiiğimizde memory Heap 'te bulunur
+// // kod çalıştığında fn çağrı yığınına gönderilir ve işlev geri döndğüğünden  yığından çıkarılır yığından son giren ilk çıkar;
+// // diğer kısımda browser'ın web Apis'dir Bulunan setTimeout xhr promise dom  gibi işlemler yapılır BUnlar js tarafından değilde browser tarafından yapılan uygulamalarıdır.
 
-// Async Await
+// //  ve bunların callBack queue / task queue erişimleri vardır queue ilk grien ilk çıkar
 
-//  async işlevleri her zman bir söz verir
+// //  son dördüncü bölüm ise eventLoop bölümüdür görevi callStack boş olup olmadığını
 
-function ali22() {
-  console.log("hello sync");
-}
+// // senkron code
 
-async function ali23() {
-  return Promise.resolve("ali async return");
-}
+// console.log("object");
+// console.log("object1");
+// console.log("object2");
+// ***
 
-ali22();
-ali23().then((res) => console.log(res));
+// öncelikle globol execution context çağırılır ve calls stack ' e itilir önce object girdi ve çalıştı daha sonra yığında çıktı sonra ikincisi diye devvam eder
 
-async function greet12() {
-  let promise = new Promise((resolve, reject) => {
-    setTimeout(resolve("hello await"), 1000);
-  });
-  let result = await promise; // wait until the promise resolves()
-  console.log(result);
-}
+// async code
 
-greet12();
+// ***
 
-function resolveHello() {
-  return new Promise((resolve) => {
-    setTimeout(function () {
-      resolve("AKSOY");
-    }, 2000);
-  });
-}
+// console.log("first");
+// setTimeout(() => {
+//   console.log("second");
+// }, 1000);
+// console.log("third");
 
-function resolveWorld() {
-  return new Promise((resolve) => {
-    setTimeout(function () {
-      resolve("AYSE");
-    }, 1000);
-  });
-}
+// js ilk başta global execution context çalışır ve ilk  başta first yazdılır sonra devam ediyoruz ve setTimeout geldi bu js kodu değildeir ve aslında bir webApi'si devreye giriyor  web Api'sini iletiliyor bu arada arkada sayac başlar saymaya ve biz call Stack boşta şuand ve sıradn diğer console.log(da) yazılır ve bu arada setTimeout işlevi bitti ama Web Api'ler doğrudan call Stack'e iletemiyor  ve callBack Queue sıraya giriyor ve buraya ilk giren ilk çıkar mantığı ile hareket eder ve burada callStack boş ise event Loop sayaesinde callBack Queue da ki işlev callStack'e iletilir
 
-async function parallel() {
-  await Promise.all([
-    (async () => console.log(await resolveHello()))(),
-    (async () => console.log(await resolveWorld()))(),
-  ]);
-}
-parallel();
+// async Promise Code
