@@ -1,13 +1,18 @@
 console.log("object");
 
+//variables
+
 let age = 25;
 
 const salary = 80000;
+
+//datatypes
 
 // primitive
 // string, number, boolean,undefined, null,bigInıt, symbol,
 // non-primitive
 //  object
+
 
 const name = "ali";
 
