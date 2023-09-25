@@ -36,6 +36,39 @@ setTimeout(() => {
   }, 1500);
 }, 100);
 
-// CallBacks
+// CallBacks herhangi bir fn diğer fn argüman olarak iletililirse yani diğer işlevlere argüman olrak aktrılan işlevlerdir
 
+// in js , functions are first class objects
 
+function greet(name) {
+  console.log("Hello " + name);
+}
+
+const greetAli = (fn) => {
+  // aslında bu HOF ve bir fn argüman olarak kabul eden veya bir işlev döndürene de HOF denir
+  const name = "ali";
+  fn(name); // callback
+};
+
+greetAli(greet);
+
+//  callback neden ihtiyac duyarız
+// 1 synchronous callBacks hemen yürütülen bir callback sync geri arama denir yukarı da ki örnek ya da aşağıda ki örnek
+
+let numbers = [1, 2, 3, 4, 5];
+
+numbers.map((item) => item * 2);
+console.log(numbers.sort((a, b) => b - a));
+
+// 2 async callback
+
+function beyda1() {
+  console.log("object");
+}
+setTimeout(beyda1, 2000);
+
+function cllbck() {
+  document.body.getElementsByTagName("h1")[0].innerText = "Js Async";
+  console.log(object);
+}
+document.body.getElementsByTagName("h1")[0].addEventListener("click", cllbck);
