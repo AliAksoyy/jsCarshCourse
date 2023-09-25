@@ -145,5 +145,43 @@ const numArray = [1, 2, 3, 4, 5, 6];
 
 for (const a of numArray) {
   console.log(a);
-  
 }
+
+//functions
+
+function greet(a = "default") {
+  console.log("hello" + " " + a);
+}
+greet();
+greet("ali");
+greet("beyda");
+greet("feyza");
+
+function add(a, b) {
+  return a + b;
+}
+
+let a3 = add(2, 3);
+console.log(a3);
+
+const arrowSum = (a, b = 4) => a + b;
+const sum2 = arrowSum(2);
+console.log(sum2);
+
+// scope
+// block Scope, funtion Scope, global Scope
+
+const myNum = 100;
+const myName = "100";
+
+if (true) {
+  const myName = "ali";
+  console.log(myName);
+  console.log(myNum);
+}
+
+function testFn() {
+  const myName = "beyda";
+  console.log(myName);
+}
+testFn();
