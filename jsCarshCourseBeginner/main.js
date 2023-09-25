@@ -102,3 +102,48 @@ if (number > 0) {
 } else {
   console.log(number + " " + "is negative");
 }
+
+let color = "green";
+
+switch (color) {
+  case "red": {
+    color = "red";
+    break;
+  }
+  case "green": {
+    color = "green";
+    break;
+  }
+  default: {
+    color = "default";
+    break;
+  }
+}
+
+console.log(color);
+
+//Looping Code
+//  for loop, while loop, do .. while loop, for .. of loop
+
+for (let i = 1; i <= 5; i++) {
+  console.log(i);
+}
+
+let a1 = 1;
+while (a1 <= 5) {
+  console.log(a1);
+  a1++;
+}
+
+let a2 = 6;
+do {
+  console.log(a2);
+  a2++;
+} while (a2 <= 5);
+
+const numArray = [1, 2, 3, 4, 5, 6];
+
+for (const a of numArray) {
+  console.log(a);
+  
+}
