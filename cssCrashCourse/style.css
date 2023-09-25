@@ -1,0 +1,9 @@
+/* inline styles , internal , external styles */
+
+h1 {
+  color: blue;
+}
+
+* {
+    color:brown
+}
