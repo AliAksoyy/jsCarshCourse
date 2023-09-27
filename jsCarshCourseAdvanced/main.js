@@ -98,7 +98,6 @@ function curry(fn) {
 const curriedSum = curry(sum);
 console.log(curriedSum(2)(3)(5));
 
-
 function a1(a) {
   return function b2(b) {
     return function c2(c) {
@@ -119,8 +118,6 @@ console.log(feyza);
 // this, JavaScript'te kullanılan özel bir anahtar kelimedir ve belirli bir bağlama (context) işaret eder. this, bağlamına göre değişebilir ve hangi değeri taşıdığını belirlemek için kullanıldığı yere bağlıdır. this, fonksiyonun nasıl çağrıldığına ve nerede tanımlandığına bağlı olarak farklı değerlere sahip olabilir.
 
 // this ile çalışan execution context'in değerlerine ulaşırız
-
-
 
 // Tabii ki, JavaScript'te this anahtar kelimesini detaylı bir şekilde açıklayayım. this, JavaScript içinde oldukça önemli ve bazen karmaşık bir kavramdır.
 
@@ -237,3 +234,217 @@ console.log(feyza);
 // bind metodu, orijinal fonksiyonun bir kopyasını döndürür ve belirli bir bağlamı bu kopyaya bağlar.
 
 // Bu üç metot, özellikle fonksiyonları farklı bağlamlarda kullanırken ve bağlama (context) ihtiyaç duyulduğunda kullanışlıdır. call ve apply, hemen fonksiyonu çalıştırmak için kullanılırken, bind yeni bir fonksiyon oluşturur ve daha sonra kullanılabilir. Bu metotlar, JavaScript'te kodunuzu daha dinamik ve esnek hale getirmenize yardımcı olur.
+
+// this keyword ait olduğu objeyi belirtir.Nasıl çağrıldığına göre tamamen değişir global'de mi çağırıyon nesne içinde mi çağırıyorsun ya da event olayı içinde mi çağırıyorsun ya da function constructor'da mı buna göre değişir
+
+// Çağrılma yöntemleri
+// 1.Implicit binding
+// 2.Explicit binding
+// 3.New binding
+// 4.Default binding
+
+// 1.Implicit binding
+const perso = {
+  name: "ali",
+  sayMyName: function () {
+    console.log(`My name is ${this.name}`);
+  },
+};
+perso.sayMyName();
+
+// 2.Explicit binding
+function sayMyName1() {
+  console.log(`My name is ${this.name}`);
+}
+
+sayMyName1.call(perso);
+
+// 3.New binding
+function Person(name) {
+  // this = {} bunu new yapıyor
+  this.name = name;
+}
+
+const p1 = new Person("ali");
+const p2 = new Person("beyda");
+
+// 4.Default binding
+
+// Prototip
+
+// JavaScript'te prototip, nesne tabanlı programlamada önemli bir kavramdır. Nesne tabanlı programlamada, bir nesne diğer nesnelerin özelliklerini ve yöntemlerini miras alabilir. Prototip, bu miras alma mekanizmasını açıklar. Bu nedenle, JavaScript'te bir nesne oluşturduğunuzda, bu nesnenin bir prototipi vardır ve bu prototip, nesnenin özelliklerini ve yöntemlerini içerebilir. İşte prototip kavramını daha ayrıntılı bir şekilde açıklayan bazı önemli konular:
+
+// Prototip Zinciri (Prototype Chain): JavaScript'teki nesneler, prototip zinciri adı verilen bir yapı içinde düzenlenirler. Bir nesnenin bir prototipi vardır ve bu prototip, başka bir nesnenin prototipi olabilir. Bu şekilde bir nesne, zincir boyunca ilgili prototiplerin özelliklerine ve yöntemlerine erişebilir.
+
+// Prototip ve İnstance (Örnek): Bir nesne oluşturduğunuzda, bu nesne bir prototipi miras alır. Bu prototip, nesnenin özelliklerini ve yöntemlerini içerebilir. Nesne üzerinde bir özellik veya yöntem çağırıldığında, önce nesne kendisine bakılır. Eğer istenilen özellik veya yöntem nesnede bulunamazsa, JavaScript otomatik olarak prototip zincirini izleyerek ilgili prototipte arama yapar.
+
+// Prototip ve Fonksiyonlar: JavaScript'teki tüm nesneler bir fonksiyon (constructor) tarafından oluşturulur. Her fonksiyonun bir prototipi vardır ve bu prototip, o fonksiyonun özelliklerini ve yöntemlerini tanımlar. Bu nedenle, bir fonksiyonun oluşturduğu nesneler, bu fonksiyonun prototipini miras alır.
+
+// prototype Özelliği: Her fonksiyonun prototype adlı bir özelliği vardır. Bu özellik, o fonksiyonun oluşturduğu nesnelerin prototipini tanımlar. Örneğin:
+
+// javascript
+// Copy code
+// function Person(name) {
+//     this.name = name;
+// }
+
+// Person.prototype.sayHello = function() {
+//     console.log("Merhaba, ben " + this.name);
+// };
+// Yukarıdaki örnekte, Person fonksiyonunun prototype özelliği, sayHello yöntemini tanımlar. Bu yöntem, Person fonksiyonu ile oluşturulan nesnelerin prototipi haline gelir.
+
+// Object.prototype: Tüm JavaScript nesneleri Object nesnesinden türetilir ve bu nedenle Object.prototype adlı bir prototipe sahiptirler. Bu prototip, tüm JavaScript nesnelerinin temel özelliklerini ve yöntemlerini içerir.
+
+// Prototip Değiştirme ve Kalıtım: JavaScript'te bir nesnenin prototipini değiştirerek kalıtım (inheritance) sağlayabilirsiniz. Yani, bir nesne başka bir nesnenin özelliklerini ve yöntemlerini miras alabilir. Bu, nesne tabanlı programlamada çok güçlü bir özelliktir.
+
+// Prototipler, JavaScript'teki nesnelerin temel yapısını oluşturan önemli bir kavramdır ve nesne tabanlı programlamada kalıtım ve kod paylaşımı için kullanılırlar. Bu kavramı iyi anladığınızda, daha etkili ve modüler JavaScript kodları yazabilirsiniz.
+
+function Bahadir(name) {
+  this.name = name;
+}
+
+let h = new Bahadir("aaa");
+
+Bahadir.prototype.ali = function () {
+  console.log("ayse");
+};
+console.log("a", h);
+h.ali();
+
+function Person2(fName, lName) {
+  this.name = fName;
+  this.lastName = lName;
+}
+
+Person2.prototype.getA = function () {
+  return this.name;
+};
+
+const p4 = new Person2("ali", "aksoy");
+const p5 = new Person2("beyda", "aksoy");
+
+p4.getFullName = function () {
+  return this.name + this.lastName;
+};
+
+console.log(p4.getFullName());
+
+console.log("a", p4);
+console.log("b", p5);
+
+// Prototip Inheritance
+
+function People(name, lastName) {
+  this.name = name;
+  this.lastName = lastName;
+}
+People.prototype.getFullName = function () {
+  return this.name + this.lastName;
+};
+
+function SuperHero(fName, lName) {
+  People.call(this, fName, lName); // person objesini çağırıyorum ama this objesi bağlamında çalıştırıyorum ve parametleri aktarıyorum
+
+  this.isSuperHero = true;
+}
+SuperHero.prototype.fightCrime = function () {
+  console.log("Fighting crime");
+};
+
+SuperHero.prototype = Object.create(People.prototype);
+
+SuperHero.prototype.constructor = SuperHero;
+
+const batman = new SuperHero("s", "y");
+console.log("batman", batman);
+console.log("batman", batman.getFullName());
+
+// Class
+
+// JavaScript'de sınıflar (classes), ECMAScript 6 (ES6) ile birlikte tanıtılan bir özelliktir. Sınıflar, nesne yönelimli programlamada (OOP) kullanılan bir tasarım desenidir ve kodun daha düzenli ve okunaklı hale gelmesini sağlar. İşte JavaScript sınıflarını detaylı bir şekilde açıklayan temel konular:
+
+// Sınıf Tanımı (Class Definition):
+
+// Bir sınıfı tanımlamak için class anahtar kelimesini kullanırız. Bir sınıf tanımlamak, bir şablona sahip bir nesne oluşturmak için ilk adımdır. Örneğin, bir Person sınıfı tanımlayalım:
+
+// javascript
+// Copy code
+// class Person {
+//     constructor(name, age) {
+//         this.name = name;
+//         this.age = age;
+//     }
+
+//     sayHello() {
+//         console.log(`Merhaba, ben ${this.name} ve ${this.age} yaşındayım.`);
+//     }
+// }
+// Yukarıdaki örnekte, Person sınıfı bir constructor metodu (kurucu) ile başlar. Bu metot, bir nesnenin ilk durumunu (state) ve özelliklerini tanımlar. Ardından, sayHello adında bir yöntem (method) eklenir.
+
+// Nesne Oluşturma (Object Instantiation):
+
+// Bir sınıftan nesne oluşturmak için new anahtar kelimesini kullanırız:
+
+// javascript
+// Copy code
+// const person1 = new Person("John", 30);
+// const person2 = new Person("Alice", 25);
+// Bu kod, Person sınıfından iki ayrı nesne (person1 ve person2) oluşturur.
+
+// Constructor Metodu:
+
+// Bir sınıfın constructor metodu, nesne oluşturulduğunda otomatik olarak çağrılır ve nesnenin başlangıç durumunu ayarlar. Constructor metodu, constructor anahtar kelimesi ile tanımlanır.
+
+// Yöntemler (Methods):
+
+// Bir sınıf içinde tanımlanan fonksiyonlar yöntem olarak adlandırılır. Yöntemler, sınıfın davranışını tanımlar. Yukarıdaki örnekte, sayHello yöntemi bir örnek yöntemidir.
+
+// Kalıtım (Inheritance):
+
+// Sınıflar, diğer sınıflardan kalıtım alabilirler. Kalıtım, bir sınıfın başka bir sınıftan özelliklerini ve yöntemlerini miras almasını sağlar. Örneğin:
+
+// javascript
+// Copy code
+// class Student extends Person {
+//     constructor(name, age, studentId) {
+//         super(name, age);
+//         this.studentId = studentId;
+//     }
+
+//     study() {
+//         console.log(`${this.name} öğrencisi ders çalışıyor.`);
+//     }
+// }
+// Yukarıdaki örnekte, Student sınıfı Person sınıfından kalıtım almıştır. super anahtar kelimesi, üst sınıfın constructor metodunu çağırmak için kullanılır.
+
+// JavaScript sınıfları, nesne yönelimli programlama (OOP) prensiplerini uygulamak için kullanılır. Bu prensipler, kodun daha modüler, yeniden kullanılabilir ve bakımı daha kolay hale gelmesini sağlar. Sınıflar, modern JavaScript uygulamalarının önemli bir bileşenidir ve ES6 ile birlikte yaygın olarak kullanılmaktadır.
+
+class People111 {
+  constructor(fName, lName) {
+    this.name = fName;
+    this.lastName = lName;
+  }
+
+  sayMyName2() {
+    return this.name + " " + this.lastName;
+  }
+}
+
+const k = new People111("a", "b");
+const k1 = new People111("c", "d");
+console.log(k1.sayMyName2());
+
+class ChildPerson extends People111 {
+  constructor(fName, lName) {
+    super(fName, lName);
+    this.isSuperHero = false;
+  }
+    fightCrime() {
+      console.log("object")
+  }
+}
+
+let k2 = new ChildPerson("f", "g");
+let k3 = new ChildPerson("h", "j");
+
+console.log("k3", k3.sayMyName2());
