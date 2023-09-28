@@ -498,3 +498,24 @@ console.log("k3", k3.sayMyName2());
 
 // Bu kavramlar, özellikle veri yapısı üzerinde gezinme ve elemanları işleme ihtiyacı duyduğunuzda çok kullanışlıdır. İterasyon, özellikle büyük veri kümesi veya liste gibi verilerle çalışırken, kodunuzu daha temiz ve etkili hale getirir.
 
+const obj2 = {
+  [Symbol.iterator]: function () {
+    let step = 0;
+    const iterator = {
+      next: function () {
+        step++;
+        if (step === 1) {
+          return { value: "Hello", done: false };
+        } else if (step === 2) {
+          return { value: "World", done: false };
+        }
+        return { value: undefined, done: true };
+      },
+    };
+    return iterator;
+  },
+};
+
+for (const word of obj2) {
+  console.log(word);
+}
