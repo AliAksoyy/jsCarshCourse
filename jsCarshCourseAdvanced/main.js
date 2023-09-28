@@ -439,8 +439,8 @@ class ChildPerson extends People111 {
     super(fName, lName);
     this.isSuperHero = false;
   }
-    fightCrime() {
-      console.log("object")
+  fightCrime() {
+    console.log("object");
   }
 }
 
@@ -448,3 +448,53 @@ let k2 = new ChildPerson("f", "g");
 let k3 = new ChildPerson("h", "j");
 
 console.log("k3", k3.sayMyName2());
+
+// Iterables and Iterators
+
+//  JavaScript'teki veri yapılarının elemanları üzerinde gezinmek için kullanılan önemli kavramlardır.
+
+// Iterable (Tekrarlanabilir):
+
+// Bir iterable, elemanlarının sırayla gezinilebileceği bir nesnedir. JavaScript'teki birçok veri yapısı, iterable'dır. Örneğin, bir dizi (array) bir iterable'dır.
+
+// javascript
+// Copy code
+// const myArray = [1, 2, 3, 4];
+// Iterator (Tekrarlayıcı):
+
+// Bir iterator, bir iterable üzerinde sırayla elemanlar arasında gezinmek için kullanılan bir nesnedir. Iterator, next() adlı bir metoda sahiptir ve bu metot ile bir sonraki elemana geçilir ve elemanın değeri döndürülür.
+
+// javascript
+// Copy code
+// const myIterator = myArray[Symbol.iterator]();
+
+// console.log(myIterator.next()); // { value: 1, done: false }
+// console.log(myIterator.next()); // { value: 2, done: false }
+// console.log(myIterator.next()); // { value: 3, done: false }
+// console.log(myIterator.next()); // { value: 4, done: false }
+// console.log(myIterator.next()); // { value: undefined, done: true }
+// Iterable ve Iterator İşbirliği:
+
+// Iterable ve iterator birlikte çalışır. Bir iterable, Symbol.iterator adlı özel bir sembolü içerir ve bu sembol bir iterator oluşturan bir fonksiyona işaret eder. Örneğin, bir dizi bu sembolü içerir ve bu sayede bir iterator elde edebiliriz.
+
+// javascript
+// Copy code
+// const myArray = [1, 2, 3, 4];
+// const myIterator = myArray[Symbol.iterator]();
+// Bu iterator, iterable'daki elemanları sırayla almak için kullanılır. Her next() çağrısı ile bir sonraki elemanın bilgileri (değer ve tamamlanma durumu) elde edilir.
+
+// for...of Döngüsü:
+
+// for...of döngüsü, bir iterable üzerinde kolayca gezinmek için kullanılır. Bu döngü, iterable'ın elemanlarını sırayla alır ve bu elemanları bir değişkene atar.
+
+// javascript
+// Copy code
+// const myArray = [1, 2, 3, 4];
+
+// for (const element of myArray) {
+//     console.log(element);
+// }
+// Bu döngü, iterable'ın sonuna geldiğinde otomatik olarak sona erer.
+
+// Bu kavramlar, özellikle veri yapısı üzerinde gezinme ve elemanları işleme ihtiyacı duyduğunuzda çok kullanışlıdır. İterasyon, özellikle büyük veri kümesi veya liste gibi verilerle çalışırken, kodunuzu daha temiz ve etkili hale getirir.
+
