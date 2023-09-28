@@ -519,3 +519,35 @@ const obj2 = {
 for (const word of obj2) {
   console.log(word);
 }
+
+// Generator
+
+// Generator'lar, fonksiyonları belirli bir noktada duraklatma ve daha sonra devam etme yeteneği sunar. Bu, kodunuzu daha okunaklı ve verimli hale getirmenize yardımcı olur. İşte JavaScript generator'ları hakkında daha ayrıntılı bir açıklama:
+
+// Generator Fonksiyonu Tanımlama:
+
+// Bir generator fonksiyonunu tanımlamak için function* sözdizimi kullanılır. Generator fonksiyonları, yield anahtar kelimesini içerebilir ve bu anahtar kelime fonksiyonun çalışmasını duraklatır ve değer döndürmesine izin verir.
+
+// Örnek:
+
+// javascript
+// Copy code
+// function* sayHello() {
+//     yield 'Merhaba';
+//     yield 'Hello';
+//     yield 'Bonjour';
+// }
+
+// Generator fn bir işlevi yarı yolda durdurabilen ve ardından durduğu yerden devam edebilen bir fonskiyoundur
+
+function* generator() {
+  yield "Hello"; // generatorün kendisini duraklatabilecek bir operatördür bir değer döndürmüyor yani üretiyor
+  yield "World";
+}
+
+const generatorObj = generator(); // generatör neseni adı verilen bir şey döndürür; Bizim iterator yapmamıza gerek yok zaten generator onu itere yaptı
+console.log(generatorObj);
+
+for (let a of generatorObj) {
+  console.log(a)
+}
