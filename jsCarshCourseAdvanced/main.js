@@ -548,6 +548,204 @@ function* generator() {
 const generatorObj = generator(); // generatör neseni adı verilen bir şey döndürür; Bizim iterator yapmamıza gerek yok zaten generator onu itere yaptı
 console.log(generatorObj);
 
-for (let a of generatorObj) {
-  console.log(a)
-}
+// Object.argumants
+// Evet, arguments nesnesi JavaScript fonksiyonları içinde kullanılabilir ve bu nesne, fonksiyonun çağrıldığı zaman geçirilen argümanları içerir. arguments nesnesi bir dizi benzeri bir nesnedir, yani indeks numaralarıyla erişebileceğiniz bir liste gibidir.
+
+// Örneğin:
+
+// javascript
+// Copy code
+// function sampleFunction() {
+//   console.log(arguments);
+// }
+
+// sampleFunction(1, "hello", true);
+// // Çıktı: [1, "hello", true]
+
+// Ancak, modern JavaScript'te arguments nesnesi yerine rest parametreleri veya spread operatörü kullanımı daha yaygın ve tavsiye edilir. Rest parametreleriyle aynı işlevi görebilirsiniz, ancak daha açıklayıcı ve güvenli bir şekilde yapabilirsiniz:
+
+// Object Assign
+
+// Elbette! Object.assign() metodu, JavaScript'te bir veya daha fazla kaynak nesnesinin özelliklerini hedef bir nesneye kopyalamak için kullanılır. Bu yöntem, bir nesnenin özelliklerini başka bir nesneye kopyalamak veya birden fazla nesnenin özelliklerini birleştirmek için oldukça kullanışlıdır. İşte Object.assign() yönteminin temel kullanımı ve nasıl çalıştığına dair bir açıklama:
+
+// Temel Kullanımı:
+// javascript
+// Copy code
+// const hedefNesne = {};
+// const kaynakNesne1 = { anahtar: 'değer1' };
+// const kaynakNesne2 = { başkaBirAnahtar: 'değer2' };
+
+// // Object.assign kullanarak kaynak nesnelerin özelliklerini hedef nesneye kopyala
+// Object.assign(hedefNesne, kaynakNesne1, kaynakNesne2);
+
+// console.log(hedefNesne);
+// // Çıktı: { anahtar: 'değer1', başkaBirAnahtar: 'değer2' }
+// Bu örnekte, Object.assign() metodu hedefNesne'ye kaynakNesne1 ve kaynakNesne2'nin özelliklerini kopyalar. Eğer aynı anahtar isimleri varsa, sonraki kaynak nesnelerin değerleri öncekileri üzerine yazacaktır.
+
+// Object.create
+
+// Object.create() yöntemi, JavaScript'te yeni bir nesne oluşturmak için kullanılan bir yöntemdir. Bu yöntem, belirli bir prototip nesnesi ile yeni bir nesne oluşturmanıza olanak tanır. Yani, oluşturduğunuz nesne, belirttiğiniz bir başka nesnenin özelliklerini ve yöntemlerini miras alır.
+
+const Geometri = {
+  alanHesapla() {
+    return this.kenarUzunlugu * this.kenarUzunlugu;
+  },
+};
+
+const Kare = Object.create(Geometri);
+Kare.kenarUzunlugu = 5;
+
+console.log(Kare.alanHesapla()); // Çıktı: 25
+
+// Object.defineProperties
+
+const Dikdortgen = {};
+
+Object.defineProperties(Dikdortgen, {
+  genislik: {
+    value: 100,
+    writable: true,
+    enumerable: true,
+    configurable: true,
+  },
+  yukseklik: {
+    value: 200,
+    writable: true,
+    enumerable: true,
+    configurable: true,
+  },
+});
+
+console.log(Dikdortgen.genislik); // Çıktı: 100
+console.log(Dikdortgen.yukseklik); // Çıktı: 200
+
+// Object.entries
+
+const cd = { name: "ali", lastName: "aksoy" };
+
+console.log(Object.entries(cd)); //[Array(2), Array(2)]
+
+// Object.freeze
+
+// Object.freeze() metodu, bir nesnenin değiştirilemez (immutable) hale getirilmesini sağlar. Bu, nesnenin özelliklerinin eklenmesini, silinmesini veya değerlerinin değiştirilmesini engeller. Yani, bir nesneyi dondurarak (freeze), nesnenin durumunun değiştirilmesini engelleyebilirsiniz.
+
+// Genel kullanım şu şekildedir:
+
+// javascript
+// Copy code
+// const nesne = {
+//   anahtar1: 'değer1',
+//   anahtar2: 'değer2'
+// };
+
+// Object.freeze(nesne);
+// Yukarıdaki örnekte, nesne adlı nesne Object.freeze() metodu ile donduruldu. Dondurulmuş bir nesnenin özelliklerini değiştirmeye çalıştığınızda, JavaScript sessizce hataya düşmez; sadece değişiklikler yapılmaz:
+
+// javascript
+// Copy code
+// nesne.anahtar1 = 'yeniDeğer'; // Bu değişiklik etkisiz olacaktır
+// console.log(nesne.anahtar1); // Çıktı: "değer1"
+
+// Object.fromEntries
+
+
+// Object.fromEntries() metodu, anahtar-değer çiftlerini içeren bir dizi veya başka bir iterable (gezilebilir) nesne alır ve bu çiftleri içeren yeni bir nesne oluşturur. Bu metot, Object.entries() metodu ile oluşturulmuş bir dizi veya başka bir iterable nesnesinden nesne oluşturmak için kullanışlıdır.
+
+// Genel kullanım şu şekildedir:
+
+// javascript
+// Copy code
+// const dizi = [['anahtar1', 'değer1'], ['anahtar2', 'değer2']];
+// const nesne = Object.fromEntries(dizi);
+
+// console.log(nesne);
+// // Çıktı: { anahtar1: 'değer1', anahtar2: 'değer2' }
+
+// Object.getOwnPropertyDescriptor
+
+// Object.getOwnPropertyDescriptor() metodu, bir nesnenin belirli bir özelliğinin (property) tanımlayıcısını (descriptor) döndüren bir JavaScript metodudur. Özellikle bir nesnenin belirli bir özelliği hakkında bilgi almak istediğinizde, bu metodu kullanabilirsiniz.
+
+// Metodun kullanımı şu şekildedir:
+
+// javascript
+// Copy code
+// const nesne = {
+//   anahtar: 'değer'
+// };
+
+// const tanimlayici = Object.getOwnPropertyDescriptor(nesne, 'anahtar');
+
+// console.log(tanimlayici);
+// // Çıktı: { value: 'değer', writable: true, enumerable: true, configurable: true }
+// Yukarıdaki örnekte, nesne adlı nesnenin 'anahtar' özelliği için Object.getOwnPropertyDescriptor() metodu çağrıldı. Bu metodun döndürdüğü nesne, belirli özelliğin value (değer), writable (değiştirilebilirlik), enumerable (gezilebilirlik) ve configurable (konfigürasyon) gibi özelliklerini içerir.
+
+// Bu metodun döndürdüğü tanımlayıcı nesnesi, belirli bir özelliğin davranışını kontrol etmek için kullanışlıdır. Örneğin, writable özelliği false olarak ayarlandığında, özellik değeri değiştirilemez ve bir hata fırlatılır.
+
+
+// Object.getOwnPropertyNames
+
+// Object.getOwnPropertyNames() metodu, bir nesnenin tüm özellik isimlerini içeren bir dizi döndüren bir JavaScript metodu. Bu metot, nesnenin sadece enumerable (gezilebilir) özelliklerini değil, aynı zamanda non-enumerable (gezilemeyen) özelliklerini de içerir.
+
+// Genel kullanım şu şekildedir:
+
+// javascript
+// Copy code
+// const nesne = {
+//   anahtar1: 'değer1',
+//   anahtar2: 'değer2'
+// };
+
+// const ozellikIsimleri = Object.getOwnPropertyNames(nesne);
+
+// console.log(ozellikIsimleri);
+// // Çıktı: [ 'anahtar1', 'anahtar2' ]
+
+// Object.is
+
+// Object.is() metodu, iki değeri karşılaştırır ve bu değerlerin aynı olup olmadığını kontrol eder. Bu metot, genellikle değerlerin aynı olup olmadığını kontrol etmek için kullanılan bir alternatiftir, özellikle JavaScript'teki karşılaştırma operatörleri (== ve ===) kullanıldığında beklenmeyen sonuçlar alabileceğiniz durumlar için.
+
+// Object.is() metodu, şu şekilde kullanılır:
+
+// javascript
+// Copy code
+// Object.is(değer1, değer2);
+// Bu metodun dönüş değeri true veya false olacaktır. değer1 ve değer2 arasındaki karşılaştırma sonucuna göre true dönerse, değerler aynıdır; aksi takdirde false döner.
+
+// Bu metodun özellikle, NaN (Not a Number) değerleri ve negatif sıfır gibi özel değerlerle çalışırken kullanışlı olduğu durumlar vardır. Örneğin:
+
+// javascript
+// Copy code
+// Object.is(0, -0); // false
+// Object.is(NaN, NaN); // true
+// Yukarıdaki örnekte, Object.is() metodu -0 ve 0 değerlerini birbirinden ayırabilir, çünkü bu iki değer farklı semantik anlamlara sahiptir.
+
+// Object.is() metodu, == veya === operatörlerinin davranışını daha doğru bir şekilde kontrol etmek istediğiniz durumlarda kullanışlıdır. Ancak, genel olarak normal karşılaştırmalar için === operatörü kullanmak yaygın olarak tercih edilir, çünkü bu operatör tür dönüşümlerini kontrol eder ve daha öngörülebilir sonuçlar verir.
+
+// Object.isExtensible
+
+// Object.isExtensible() metodu, bir nesnenin yeni özellikler ekleyip ekleyemeyeceğini kontrol eden bir JavaScript metodu. Bu metot, belirtilen nesnenin genişletilebilir (extensible) olup olmadığını kontrol eder. Genişletilebilir nesneler, üzerlerine yeni özellikler veya metodlar ekleyebileceğiniz nesnelerdir.
+
+// Object.seal
+
+// Object.seal() metodu, bir nesneyi "kapatır". Kapatılan bir nesne, üzerinde yeni özellikler eklenmesine izin vermez, mevcut özelliklerin silinmesine izin vermez ve varolan özelliklerin konfigürasyonunu (configurability) değiştirmeye izin vermez. Ancak, varolan özelliklerin değerlerini değiştirmeye izin verir.
+
+// Kapatılan bir nesnenin özelliklerinin değeri değiştirilebilir, ancak özelliklerin kendisi değiştirilemez (non-configurable) hale gelir. Yani, kapatılan bir nesnenin özelliklerini değiştirmek mümkündür, ancak yeni özellikler eklenemez ve varolan özellikler silinemez.
+
+// Metodun kullanımı şu şekildedir:
+
+// javascript
+// Copy code
+// const nesne = { anahtar: 'değer' };
+
+// console.log(Object.isSealed(nesne)); // false
+
+// Object.seal(nesne); // Nesneyi kapatır
+
+// nesne.anahtar = 'yeniDeğer'; // Geçerli, çünkü özellik değeri değiştirilebilir
+
+// nesne.yeniAnahtar = 'yeniDeger'; // Hata fırlatır: TypeError: Cannot add property yeniAnahtar, object is not extensible
+
+// delete nesne.anahtar; // Hata fırlatır: TypeError: Cannot delete property 'anahtar' of #<Object>
+
+// console.log(Object.isSealed(nesne)); // true
+// Yukarıdaki örnekte, Object.seal() metodu nesne adlı nesneyi kapatır. Ardından, nesne üzerinde varolan özelliklerin değerlerini değiştirebiliriz, ancak yeni özellikler ekleyemeziz ve varolan özellikleri silemeyiz. Bu şekilde nesnenin yapısı korunur, ancak değerler değiştirilebilir.
