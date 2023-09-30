@@ -1,0 +1,72 @@
+/* css ızgarasında container ve alt öğleri item 'lar bizim için önemlidir  Grid line dikey olan çizgimizdir. Diğeri ise grid cell ızgaramızın içinde ki hücreleri temsil eder. grid area çevrili toplam alan olan ızgara*/
+
+body {
+  margin: 0;
+}
+
+.container {
+  border: 6px solid black;
+  display: grid;
+  /* grid-template-columns: repeat(3, minmax(200px, 1fr)); */
+  /* grid-template-columns: repeat(3,300px); */
+  height: 800px;
+  /* grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr); */
+  grid-template: repeat(3, 200px) / repeat(3, 200px);
+  /* column-gap: 20px;
+  row-gap: 10px; */
+  /* justify-items: center;
+  align-items: center;
+  place-items: center; */
+  /* justify-content: space-around; colum  */
+  /* align-content:space-between ; rowları */
+  /* align-items: center; */
+  /* place-content: align-content / justify-content; */
+  /* grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  grid-auto-rows: 200px; */
+}
+
+.grid-item {
+  color: aliceblue;
+  font-size: 1.5rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.item-1 {
+  background-color: #9a3737;
+  /* grid-column-start: 1;
+  grid-column-end:  3;
+  grid-row-start: 1;
+  grid-column-end: 3; */
+  grid-column: 1 / span 2;
+  grid-row: 1 / span 2;
+}
+.item-2 {
+  background-color: #1a8b64;
+  /* justify-self: end;
+  align-self: flex-start; */
+  place-self: center;
+}
+.item-3 {
+  background-color: #252991;
+}
+.item-4 {
+  background-color: #941343;
+}
+.item-5 {
+  background-color: #b6e51a;
+}
+.item-6 {
+  background-color: #1c89b7;
+}
+.item-7 {
+  background-color: #c7a5a5;
+}
+.item-8 {
+  background-color: #6ab551;
+}
+.item-9 {
+  background-color: #ba4adc;
+}
