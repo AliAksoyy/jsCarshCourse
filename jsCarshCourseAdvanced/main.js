@@ -749,3 +749,4 @@ console.log(Object.entries(cd)); //[Array(2), Array(2)]
 
 // console.log(Object.isSealed(nesne)); // true
 // Yukarıdaki örnekte, Object.seal() metodu nesne adlı nesneyi kapatır. Ardından, nesne üzerinde varolan özelliklerin değerlerini değiştirebiliriz, ancak yeni özellikler ekleyemeziz ve varolan özellikleri silemeyiz. Bu şekilde nesnenin yapısı korunur, ancak değerler değiştirilebilir.
+
