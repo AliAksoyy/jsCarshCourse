@@ -1,0 +1,56 @@
+body {
+  margin: 0;
+}
+
+.container {
+  border: 6px solid black;
+  display: flex;
+  /* flex-direction: column-reverse; */
+  /* flex-wrap: wrap-reverse; */
+  /* flex-wrap: wrap; */
+
+  /* flex-flow: row wrap;flex-direction: / flexwrap; */
+  /* column-gap: 30px; */
+  /* gap: 20px 30px; */
+}
+
+.flex-item {
+  color: aliceblue;
+  font-size: 1.5rem;
+  padding: 1rem;
+  text-align: center;
+}
+.item-1 {
+  background-color: #40e7e4;
+  /* order: 1; */
+  /* default 0 */
+  /* flex-grow: 1; */
+  /* flex-shrink: 1; */ 
+  /* default değeri 1 dir */
+  /* flex-basis: auto; */
+  /* align-self: auto; */
+}
+.item-2 {
+  background-color: #037c0b;
+}
+.item-3 {
+  background-color: #252991;
+}
+.item-4 {
+  background-color: #941343;
+}
+.item-5 {
+  background-color: #b6e51a;
+}
+.item-6 {
+  background-color: #1c89b7;
+}
+.item-7 {
+  background-color: #c7a5a5;
+}
+.item-8 {
+  background-color: #6ab551;
+}
+.item-9 {
+  background-color: #ba4adc;
+}
